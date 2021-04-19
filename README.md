@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-<h1 align="center">PHOTOGALLERY-APP</h1>
+<h1 align="center">AMPLE-GALLERY</h1>
 
 <div align="center">
   <h3>
@@ -18,7 +18,7 @@
 ![screenshot]()
 
 ### About
-  This is a replica of an alien blog site from frontend masters. 
+  A Dynamic photo galley app built with REACTjs and Google Firebase. 
 
 ### Built With
 
