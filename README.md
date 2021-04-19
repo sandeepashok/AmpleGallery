@@ -15,7 +15,7 @@
 
 ## Overview
 
-![screenshot](Screenshot2021-04-19201727.png)
+![screenshot](https://github.com/sandeepashok/Photogallery-app/blob/master/Screenshot%202021-04-19%20201727.png)
 
 ### About
   A Dynamic photo galley app. 
