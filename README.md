@@ -15,7 +15,7 @@
 
 ## Overview
 
-![screenshot](https://github.com/sandeepashok/Photogallery-app/blob/master/Screenshot%202021-04-19%20201727.png)
+<img href='https://github.com/sandeepashok/Photogallery-app/blob/master/Screenshot%202021-04-19%20201727.png' align='center'/>
 
 ### About
   A Dynamic photo galley app. 
