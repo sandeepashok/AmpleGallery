@@ -15,7 +15,7 @@
 
 ## Overview
 
-![screenshot](Screenshot 2021-04-19 201727.png)
+![screenshot](Screenshot2021-04-19201727.png)
 
 ### About
   A Dynamic photo galley app. 
