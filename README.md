@@ -18,15 +18,14 @@
 ![screenshot]()
 
 ### About
-  A Dynamic photo galley app built with REACTjs and Google Firebase. 
+  A Dynamic photo galley app. 
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-- HTML
-- CSS
-- JavaScript
+- REACT
+- Google FIREBASE
 
 
 ## Contact
