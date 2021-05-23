@@ -13,9 +13,9 @@
 
 <!-- OVERVIEW -->
 
-## Overview
+<h2 align="center">Overview</h2>
 
-![screenshot](Capture.PNG)
+<img src='capture.PNG'/>
 
 ### About
   A Dynamic photo galley app. 
