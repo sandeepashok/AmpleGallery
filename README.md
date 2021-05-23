@@ -15,7 +15,7 @@
 
 <h2 align="center">Overview</h2>
 
-<img src='capture.PNG'/>
+<img src='capture.PNG'>
 
 ### About
   A Dynamic photo galley app. 
