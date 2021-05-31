@@ -18,7 +18,7 @@
 <p align="center"><img src='Capture.PNG' /></p>
 
 ### About
-  A Dynamic photo galley app. 
+  This is a dynamic photo gallary app called "AmpleGallary" where we can upload images of certian formats, which is stored on db in realtime.
 
 ### Built With
 
