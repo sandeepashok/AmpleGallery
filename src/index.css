@@ -259,7 +259,7 @@ label:hover {
 @media only screen and (max-width: 800px) {
 
   .image-grid {
-    margin: 20px;
+    margin: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
