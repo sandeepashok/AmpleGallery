@@ -22,13 +22,12 @@ function UploadForm() {
     return (
         <form>
             <label>
-                <input type='file' onChange={changeHandler} />
-                <span>+</span>
+                <span className='add-btn'>+</span>
+                <input type='file' className='add-btn-holder' onChange={changeHandler} />
             </label>
             <div className='output'></div>
             {error && <div className='error'>{error}</div>}
-            {file && <div>{file.name}</div>}
-            {file && <ProgressBar file={file} setFile={setFile} />}
+            {file && <><div>Uploading Image...</div><ProgressBar file={file} setFile={setFile} /></>}
         </form>
     );
 }

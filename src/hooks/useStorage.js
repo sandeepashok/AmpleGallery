@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
 import { projectStorage, projectFirestore, timeStamp } from '../firebase/config'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase/config'
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null)
+    const [user] = useAuthState(auth)
 
     useEffect(() => {
         //references
         const storageRef = projectStorage.ref(file.name);
-        const collectionRef = projectFirestore.collection('images')
+        const collectionRef = projectFirestore.collection('users').doc(user.uid).collection('images')
 
         storageRef.put(file).on('state_changed', (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100
@@ -22,7 +25,7 @@ const useStorage = (file) => {
             collectionRef.add({ url, createdAt })
             setUrl(url)
         })
-    }, [file]);
+    }, [file, user.uid]);
 
     return { progress, error, url }
 

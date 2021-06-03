@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { projectFirestore } from '../firebase/config'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase/config'
 
 const useFirestore = (Collection) => {
     const [docs, setDocs] = useState([]);
+    const [user] = useAuthState(auth)
 
     useEffect(() => {
-        const unsub = projectFirestore.collection(Collection)
+        const unsub = projectFirestore.collection('users').doc(user.uid).collection('images')
             .orderBy('createdAt', 'desc')
             .onSnapshot((snap) => {
                 let documents = [];
@@ -16,7 +19,7 @@ const useFirestore = (Collection) => {
             });
         //cleanup
         return () => unsub();
-    }, [Collection])
+    }, [Collection, user.uid])
 
     return { docs };
 }

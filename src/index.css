@@ -17,10 +17,41 @@ body {
 
 .dark {
   background-color: var(--dmbg);
+  color: rgb(214, 213, 213);
 }
 
 .light {
   background-color: var(--bg);
+  color: #151515;
+}
+
+.theme-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.signout-btn {
+  height: max-content;
+  padding: 0.5rem;
+  font-size: 16px;
+  border: 1px solid #4242421c;
+  background-color: transparent;
+  color: var(--primary);
+  margin: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signout-btn:hover {
+  color: white;
+  background-color: var(--primary);
+}
+
+.theme-btn {
+  margin: 0.5rem;
+  cursor: pointer;
 }
 
 .App {
@@ -61,13 +92,24 @@ label {
   display: block;
   width: 30px;
   height: 30px;
-  border: 1px solid var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 50%;
   margin: 10px auto;
   line-height: 30px;
   color: var(--primary);
   font-weight: bold;
   font-size: 24px;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-btn-holder {
+  margin: 0;
+  padding: 0;
+}
+
+.add-btn {
+  font-size: xx-large;
 }
 
 label:hover {
@@ -114,6 +156,19 @@ label:hover {
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
+}
+
+.delete-img-btn {
+  padding: 5px !important;
+  position: absolute !important;
+  color: crimson !important;
+  top: 0.1rem;
+  right: 0.1rem;
+}
+
+.delete-img-btn:hover {
+  color: red !important;
 }
 
 /* modal styles */
@@ -133,4 +188,88 @@ label:hover {
   margin: 60px auto;
   box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
   border: 3px solid white;
+  z-index: 99 !important;
+}
+
+/* signin */
+
+.signin-container {
+  margin: auto;
+  max-width: 100vh;
+}
+
+.signin-page {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  height: 50vh;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 7rem;
+}
+
+.signin-page h1 {
+  color: #4E4E4E;
+}
+
+.signin-page h4 {
+  color: #4E4E4E;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.signin-btn {
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: bold;
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  border: none;
+  color: rgba(0, 0, 255, 0.589);
+  border: 1px solid #4242421c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.brand-logo {
+  margin-top: 1.5rem;
+  width: 100px;
+  height: 100px;
+}
+
+.google-img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .signin-container {
+    margin: auto;
+    margin-top: 6rem;
+    width: 100%;
+  }
+
+  .signin-page h4 {
+    font-size: 15px;
+  }
+
+  .signin-page {
+    width: 80%;
+  }
+
 }
