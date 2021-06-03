@@ -258,6 +258,29 @@ label:hover {
 
 @media only screen and (max-width: 800px) {
 
+  .image-grid {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .backdrop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .backdrop img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: 10px auto;
+    box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+    z-index: 99 !important;
+  }
+
   .signin-container {
     margin: auto;
     margin-top: 6rem;
