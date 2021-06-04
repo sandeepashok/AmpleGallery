@@ -8,10 +8,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase/config'
 
 function App() {
+
   const [selectedImg, setSelectedImg] = useState(null)
   const [user] = useAuthState(auth)
-
-  const [isDark, setIsDark] = useState(false)
+  let [isDark, setIsDark] = useState(false)
 
   const darkModeHandler = (e) => {
     setIsDark(!isDark)
