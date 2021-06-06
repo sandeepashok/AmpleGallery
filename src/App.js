@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       {user ? <div className='image-display-section'>
-        <Title darkModeHandler={darkModeHandler} />
+        <Title darkModeHandler={darkModeHandler} user={user} />
         <UploadForm />
         <ImageGrid setSelectedImg={setSelectedImg} />
         {selectedImg && <ImgPopUp selectedImg={selectedImg} setSelectedImg={setSelectedImg} />}
