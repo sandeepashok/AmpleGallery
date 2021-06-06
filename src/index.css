@@ -59,6 +59,11 @@ body {
   margin: 0 auto;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title h1 {
   color: var(--primary);
   font-size: 1.7rem;

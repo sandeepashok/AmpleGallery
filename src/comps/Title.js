@@ -5,7 +5,7 @@ import SignOut from './Signout';
 function Title({ darkModeHandler, user }) {
   return (
     <div className="title">
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className='nav'>
         <h1>AmpleGallery</h1>
         <div className='theme-logout'>
           <Brightness4RoundedIcon className='theme-btn' onClick={darkModeHandler} />
