@@ -18,7 +18,7 @@
 <p align="center"><img src='Capture.PNG' /></p>
 
 ### About
-  This is a dynamic photo gallary app called "AmpleGallary" where we can upload images of certian formats, which is stored on db in realtime.
+  This is a dynamic photo gallery app called "AmpleGallery" where we can upload images of certian formats, which is stored on db in realtime.
 
 ### Built With
 
