@@ -1,27 +1,36 @@
-import { useEffect, useState } from 'react'
-import { projectFirestore } from '../firebase/config'
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/config'
+import { auth, collection, onSnapshot, orderBy, projectFirestore, query } from '../firebase/config';
 
-const useFirestore = (Collection) => {
+const useFirestore = () => {
     const [docs, setDocs] = useState([]);
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
-        const unsub = projectFirestore.collection('users').doc(user.uid).collection('images')
-            .orderBy('createdAt', 'desc')
-            .onSnapshot((snap) => {
-                let documents = [];
-                snap.forEach(doc => {
-                    documents.push({ ...doc.data(), id: doc.id })
+        const fetchData = async () => {
+            if (user) {
+                const q = query(
+                    collection(projectFirestore, 'users', user.uid, 'images'),
+                    orderBy('createdAt', 'desc')
+                );
+
+                const unsub = onSnapshot(q, (snap) => {
+                    let documents = [];
+                    snap.forEach((doc) => {
+                        documents.push({ ...doc.data(), id: doc.id });
+                    });
+                    setDocs(documents);
                 });
-                setDocs(documents);
-            });
-        //cleanup
-        return () => unsub();
-    }, [Collection, user.uid])
+
+                // Cleanup
+                return () => unsub();
+            }
+        };
+
+        fetchData();
+    }, [user]);
 
     return { docs };
-}
+};
 
 export default useFirestore;

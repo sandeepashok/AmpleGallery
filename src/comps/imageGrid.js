@@ -3,7 +3,7 @@ import useFirestore from '../hooks/useFirestore';
 import { motion } from 'framer-motion';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { auth, projectFirestore } from '../firebase/config'
+import { auth, deleteDoc, doc, projectFirestore } from '../firebase/config'
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const ImageGrid = ({ setSelectedImg }) => {
@@ -11,10 +11,16 @@ const ImageGrid = ({ setSelectedImg }) => {
     const [user] = useAuthState(auth);
     const docsCopy = [...docs];
 
-    const deleteImgHandler = (id) => {
-        setSelectedImg(null)
-        projectFirestore.collection('users').doc(user.uid).collection('images').doc(id).delete()
-    }
+    const deleteImgHandler = async (id) => {
+        setSelectedImg(null);
+        const userDocRef = doc(projectFirestore, 'users', user.uid, 'images', id);
+        try {
+            await deleteDoc(userDocRef);
+            console.log('Document successfully deleted!');
+        } catch (error) {
+            console.error('Error deleting document: ', error);
+        }
+    };
 
     return (
         <div className="image-grid">

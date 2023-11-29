@@ -1,34 +1,43 @@
-import { useState, useEffect } from 'react'
-import { projectStorage, projectFirestore, timeStamp } from '../firebase/config'
+import { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/config'
+import { auth, collection, projectFirestore, projectStorage } from '../firebase/config';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
-    const [url, setUrl] = useState(null)
-    const [user] = useAuthState(auth)
+    const [url, setUrl] = useState(null);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
-        //references
-        const storageRef = projectStorage.ref(file.name);
-        const collectionRef = projectFirestore.collection('users').doc(user.uid).collection('images')
+        const storageRef = ref(projectStorage, file.name);
+        const collectionRef = collection(projectFirestore, 'users', user.uid, 'images');
 
-        storageRef.put(file).on('state_changed', (snap) => {
-            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100
-            setProgress(percentage);
-        }, (err) => {
-            setError(err);
-        }, async () => {
-            const url = await storageRef.getDownloadURL();
-            const createdAt = timeStamp();
-            collectionRef.add({ url, createdAt })
-            setUrl(url)
-        })
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setProgress(percentage);
+            },
+            (err) => {
+                setError(err);
+            },
+            async () => {
+                const downloadURL = await getDownloadURL(storageRef);
+                const createdAt = serverTimestamp();
+
+                const imageDocRef = doc(collectionRef);
+                await setDoc(imageDocRef, { url: downloadURL, createdAt });
+
+                setUrl(downloadURL);
+            }
+        );
     }, [file, user.uid]);
 
-    return { progress, error, url }
-
-}
+    return { progress, error, url };
+};
 
 export default useStorage;
